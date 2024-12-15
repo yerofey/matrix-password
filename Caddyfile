@@ -1,3 +1,0 @@
-password.fkrkn.ru {
-    reverse_proxy app:3000
-}
