@@ -1,0 +1,22 @@
+services:
+  password-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: password-change-service
+    ports:
+      - "3001:3001"
+    environment:
+      - SYNAPSE_ADMIN_TOKEN=${SYNAPSE_ADMIN_TOKEN}
+      - SYNAPSE_URL=http://synapse:8008
+    networks:
+      - matrix
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    restart: unless-stopped
+
+networks:
+  matrix:
+    name: matrix_matrix
+    external: true
